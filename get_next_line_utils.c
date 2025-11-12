@@ -6,7 +6,7 @@
 /*   By: ngulam <ngulam@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 09:34:06 by ngulam            #+#    #+#             */
-/*   Updated: 2025/11/11 21:40:59 by ngulam           ###   ########.fr       */
+/*   Updated: 2025/11/12 16:07:16 by ngulam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-int	ft_newline(char	*str)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (str[i] == '\n')
-			return (i);
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 		i++;
 	}
-	return (-1);
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
 }

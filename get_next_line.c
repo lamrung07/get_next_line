@@ -6,7 +6,7 @@
 /*   By: ngulam <ngulam@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 09:37:19 by ngulam            #+#    #+#             */
-/*   Updated: 2025/11/11 21:49:12 by ngulam           ###   ########.fr       */
+/*   Updated: 2025/11/12 18:12:42 by ngulam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 size_t	ft_strlen(const char *s);
 int		ft_newline(char	*str);
 
-int	ft_line(char **line, int fd)
+// char	*ft_resetline(static char *last)
+// {
+// 	last = 
+// }
+
+char	*ft_line(char **line, int fd)
 {
 	int		r;
 	char	*buffer;
@@ -23,34 +28,44 @@ int	ft_line(char **line, int fd)
 	r = 1;
 	while (r > 0)
 	{
-		buffer = malloc((BUFFER_SIZE + 1)* sizeof(char));
+		buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+		if (!buffer)
+		{
+			free(buffer);
+			return (NULL);
+		}
 		r = read(fd, buffer, BUFFER_SIZE);
 		buffer[BUFFER_SIZE] = '\0';
 		*line = ft_strjoin(*line, buffer);
-		if (ft_newline(buffer) >= 0)
-			break;
+		if (ft_strchr(buffer, '\n'))
+		{
+			return (ft_strchr(buffer, '\n'));
+			break ;
+		}
 	}
-	return(0);
+	return (NULL);
 }
 
 char	*get_next_line(int fd)
 {
 	char		*line;
-	// static char	*last;
+	static char	*last;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
-		// free(buffer);
 		return (NULL);
-	}
-	line = "";
-	ft_line(&line, fd);
+	if (!last)
+		line = "";
+	else
+		line = last;
+	last = ft_line(&line, fd);
 	return (line);
 }
 
-int	main(void)
-{
-	int fd = open("helloworld.txt", O_RDONLY);
-	while(printf("%s", get_next_line(fd)))
-    close(fd);
-}
+// int	main(void)
+// {
+// 	int fd = open("helloworld.txt", O_RDONLY);
+// 	int r = 1;
+// 	while(r > 0)
+// 		r = printf("%s",get_next_line(fd));
+//     close(fd);
+// }
