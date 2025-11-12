@@ -62,12 +62,13 @@ char	*get_next_line(int fd)
 }
 
 
-int	main(void)
+int	main()
 {
-	int fd = open("helloworld.txt", O_RDONLY);
-	int r = 1;
-	while(r > 0)
-		r = printf("%s",get_next_line(fd));
-    close(fd);
+	// int fd = open("helloworld.txt", O_RDONLY);
+	// int r = 1;
+	// while(r > 0)
+	// 	r = printf("%s",get_next_line(fd));
+    // close(fd);
+	printf("SDfsdfsdf");
 	return(0);
 }
