@@ -6,7 +6,7 @@
 /*   By: ngulam <ngulam@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 09:37:19 by ngulam            #+#    #+#             */
-/*   Updated: 2025/11/12 18:12:42 by ngulam           ###   ########.fr       */
+/*   Updated: 2025/11/13 09:51:14 by ngulam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 size_t	ft_strlen(const char *s);
 int		ft_newline(char	*str);
 
-// char	*ft_resetline(static char *last)
-// {
-// 	last = 
-// }
 
-char	*ft_line(char **line, int fd)
+static	char	*ft_line(char **line, int fd)
 {
 	int		r;
 	char	*buffer;
@@ -61,11 +57,11 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int	main(void)
-// {
-// 	int fd = open("helloworld.txt", O_RDONLY);
-// 	int r = 1;
-// 	while(r > 0)
-// 		r = printf("%s",get_next_line(fd));
-//     close(fd);
-// }
+int	main(void)
+{
+	int fd = open("helloworld.txt", O_RDONLY);
+	int r = 1;
+	while(r > 0)
+		r = printf("%s",get_next_line(fd));
+    close(fd);
+}
