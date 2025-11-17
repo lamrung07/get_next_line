@@ -6,7 +6,7 @@
 /*   By: ngulam <ngulam@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 09:36:24 by ngulam            #+#    #+#             */
-/*   Updated: 2025/11/12 17:37:04 by ngulam           ###   ########.fr       */
+/*   Updated: 2025/11/17 16:24:44 by ngulam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
 char	*get_next_line(int fd);
-
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif
